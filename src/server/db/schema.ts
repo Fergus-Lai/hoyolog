@@ -11,6 +11,7 @@ import {
   serial,
   smallint,
   text,
+  time,
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
@@ -87,6 +88,7 @@ export const genshinPulls = createTable("genshin_pulls", {
   pool: genshinPoolEnum("pool"),
   gameId: varchar("game_id", { length: 10 }),
   targetId: integer("target_id"),
+  lastPullTime: timestamp("last_pull_time"),
 });
 
 export const genshinPullsRelation = relations(genshinPulls, ({ one }) => ({
@@ -163,6 +165,7 @@ export const honkaiPulls = createTable("honkai_pulls", {
   pool: genshinPoolEnum("pool"),
   gameId: varchar("game_id", { length: 9 }),
   targetId: integer("target_id"),
+  lastPullTime: timestamp("last_pull_time"),
 });
 
 export const honkaiPullsRelation = relations(honkaiPulls, ({ one }) => ({
